@@ -24,7 +24,7 @@ export const Meteors = ({ number }: { number: number }) => {
 Home.get('/', (c) => {
   const title = 'Vortex Music Database'
   const description =
-    'Vortex is a powerful music database API providing seamless access to songs, albums, artists, playlists, and more. Built for developers who need reliable music data.'
+    'Vortex connects you to millions of songs, albums, artists, and playlists. A unified music database API for developers.'
 
   return c.html(
     <html>
@@ -41,20 +41,24 @@ Home.get('/', (c) => {
         <meta property="twitter:description" content={description} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
         <script src="https://cdn.tailwindcss.com" />
         <style
           dangerouslySetInnerHTML={{
             __html: `
             * { font-family: 'Inter', sans-serif; } 
-            @keyframes borderAnimation {
-              0%, 100% { background-position: 0% 50%; }
-              50% { background-position: 100% 50%; }
-            }
             @keyframes meteorAnimation {
               0% { transform: rotate(215deg) translateX(0); opacity: 1; }
               70% { opacity: 1; }
               100% { transform: rotate(215deg) translateX(-500px); opacity: 0; }
+            }
+            @keyframes pulse {
+              0%, 100% { opacity: 1; }
+              50% { opacity: 0.5; }
+            }
+            @keyframes float {
+              0%, 100% { transform: translateY(0px); }
+              50% { transform: translateY(-20px); }
             }
             .meteor::before {
               content: '';
@@ -64,122 +68,162 @@ Home.get('/', (c) => {
               width: 50px;
               height: 1px;
               background: linear-gradient(90deg, #8b5cf6, transparent);
+            }
+            .glass-nav {
+              background: rgba(0, 0, 0, 0.5);
+              backdrop-filter: blur(10px);
+              -webkit-backdrop-filter: blur(10px);
             }`
           }}
         />
       </head>
-      <body class="bg-black min-h-screen flex flex-col">
+      <body class="bg-black min-h-screen text-white overflow-x-hidden">
         {/* Navigation */}
-        <nav class="border-b border-gray-800 bg-black bg-opacity-50 backdrop-blur-sm sticky top-0 z-50">
-          <div class="max-w-screen-lg mx-auto px-4 py-4 flex items-center justify-between">
+        <nav class="glass-nav border-b border-white border-opacity-10 sticky top-0 z-50">
+          <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
             <div class="flex items-center space-x-3">
               <svg class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path
-                  fill="#8b5cf6"
-                  d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5zm0 18c-3.86-.93-7-5.17-7-9V8.3l7-3.5 7 3.5V11c0 3.83-3.14 8.07-7 9z"
-                />
-                <circle cx="12" cy="12" r="3" fill="#8b5cf6"/>
+                <circle cx="12" cy="12" r="10" fill="none" stroke="#8b5cf6" stroke-width="2"/>
+                <circle cx="12" cy="12" r="6" fill="none" stroke="#a78bfa" stroke-width="2"/>
+                <circle cx="12" cy="12" r="2" fill="#8b5cf6"/>
               </svg>
-              <span class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
-                Vortex
-              </span>
+              <span class="text-2xl font-bold tracking-tight">Vortex</span>
             </div>
-            <div class="flex items-center space-x-6">
-              <a href="/docs" class="text-gray-300 hover:text-white transition-colors text-sm">Docs</a>
-              <a href="#features" class="text-gray-300 hover:text-white transition-colors text-sm">Features</a>
-              <a href="https://github.com" target="_blank" class="text-gray-300 hover:text-white transition-colors text-sm">GitHub</a>
+            <div class="hidden md:flex items-center space-x-8">
+              <a href="/docs" class="text-white text-opacity-70 hover:text-opacity-100 transition-all">Documentation</a>
+              <a href="https://github.com" target="_blank" class="text-white text-opacity-70 hover:text-opacity-100 transition-all">GitHub</a>
+              <a href="/docs" class="px-6 py-2 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-sm font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition-all">
+                Get Started
+              </a>
             </div>
           </div>
         </nav>
 
-        {/* Main Content */}
-        <main class="flex-1 max-w-screen-lg mx-auto px-4 py-16 relative overflow-hidden">
-          <Meteors number={15} />
-
-          {/* Hero Section */}
-          <div class="text-center mb-16 relative z-10">
-            <div class="inline-block mb-4">
-              <span class="animate-[borderAnimation_3s_linear_infinite] rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-purple-500 bg-[length:400%_400%] p-1">
-                <span class="block rounded-full px-4 py-1.5 text-xs text-white uppercase tracking-wider bg-black">
-                  Music Database API
-                </span>
+        {/* Hero Section */}
+        <section class="relative min-h-screen flex items-center justify-center px-6">
+          <Meteors number={20} />
+          
+          <div class="max-w-6xl mx-auto text-center relative z-10">
+            <div class="mb-8">
+              <span class="inline-block px-4 py-2 rounded-full text-xs font-semibold tracking-wide uppercase bg-white bg-opacity-5 border border-white border-opacity-20 text-white text-opacity-80">
+                Music Database API
               </span>
             </div>
-            <h1 class="text-5xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 mb-6">
-              Vortex Music
+            
+            <h1 class="text-6xl md:text-8xl font-bold mb-6 leading-tight">
+              <span class="block text-white">Connect to</span>
+              <span class="block bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 text-transparent bg-clip-text">
+                Millions of Songs
+              </span>
             </h1>
-            <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-8">
-              A comprehensive music database API providing instant access to millions of songs, albums, artists, and playlists. 
-              Built for developers, powered by speed.
+            
+            <p class="text-xl md:text-2xl text-white text-opacity-60 max-w-3xl mx-auto mb-12 leading-relaxed font-light">
+              Vortex connects developers to a vast music database with instant access to songs, albums, artists, playlists, and more. 
+              One API, endless possibilities.
             </p>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">
               <a
                 href="/docs"
-                class="px-8 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition-all"
+                class="px-10 py-4 bg-white text-black rounded-full text-lg font-bold hover:bg-opacity-90 transition-all shadow-xl shadow-white/10"
               >
-                Get Started
+                Explore API
               </a>
               <a
                 href="https://github.com"
                 target="_blank"
-                class="px-8 py-3 border border-gray-700 text-gray-300 rounded-lg font-semibold hover:bg-gray-900 transition-all"
+                class="px-10 py-4 border-2 border-white border-opacity-20 text-white rounded-full text-lg font-semibold hover:border-opacity-40 transition-all"
               >
                 View on GitHub
               </a>
             </div>
+
+            {/* Connection Visual */}
+            <div class="flex items-center justify-center gap-8 flex-wrap mt-16">
+              <div class="text-center animate-[float_3s_ease-in-out_infinite]">
+                <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+                  <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                  </svg>
+                </div>
+                <p class="text-white text-opacity-50 text-sm font-medium">Connected</p>
+              </div>
+
+              <div class="hidden md:block w-32 h-0.5 bg-gradient-to-r from-transparent via-purple-500 to-transparent animate-[pulse_2s_ease-in-out_infinite]"></div>
+
+              <div class="text-center animate-[float_3s_ease-in-out_infinite_0.5s]">
+                <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-white bg-opacity-5 border-2 border-white border-opacity-20 flex items-center justify-center">
+                  <svg class="w-8 h-8 text-white text-opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/>
+                  </svg>
+                </div>
+                <p class="text-white text-opacity-50 text-sm font-medium">Songs</p>
+              </div>
+
+              <div class="hidden md:block w-32 h-0.5 bg-gradient-to-r from-transparent via-pink-500 to-transparent animate-[pulse_2s_ease-in-out_infinite_0.5s]"></div>
+
+              <div class="text-center animate-[float_3s_ease-in-out_infinite_1s]">
+                <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-white bg-opacity-5 border-2 border-white border-opacity-20 flex items-center justify-center">
+                  <svg class="w-8 h-8 text-white text-opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                  </svg>
+                </div>
+                <p class="text-white text-opacity-50 text-sm font-medium">Artists</p>
+              </div>
+
+              <div class="hidden md:block w-32 h-0.5 bg-gradient-to-r from-transparent via-purple-500 to-transparent animate-[pulse_2s_ease-in-out_infinite_1s]"></div>
+
+              <div class="text-center animate-[float_3s_ease-in-out_infinite_1.5s]">
+                <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-white bg-opacity-5 border-2 border-white border-opacity-20 flex items-center justify-center">
+                  <svg class="w-8 h-8 text-white text-opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                  </svg>
+                </div>
+                <p class="text-white text-opacity-50 text-sm font-medium">Albums</p>
+              </div>
+            </div>
           </div>
+        </section>
 
-          {/* Features Grid */}
-          <div id="features" class="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
-            <div class="p-6 border border-gray-800 rounded-lg hover:border-purple-500/50 transition-all bg-gray-900 bg-opacity-50">
-              <div class="w-12 h-12 bg-purple-500 bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
-                <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
+        {/* Stats Section */}
+        <section class="py-20 px-6 border-t border-white border-opacity-5">
+          <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-12">
+              <div class="text-center">
+                <p class="text-5xl md:text-6xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text mb-2">10M+</p>
+                <p class="text-white text-opacity-50 text-sm uppercase tracking-wide">Songs</p>
               </div>
-              <h3 class="text-xl font-bold text-white mb-2">Lightning Fast</h3>
-              <p class="text-gray-400">Optimized API endpoints delivering music data at incredible speeds.</p>
-            </div>
-
-            <div class="p-6 border border-gray-800 rounded-lg hover:border-pink-500/50 transition-all bg-gray-900 bg-opacity-50">
-              <div class="w-12 h-12 bg-pink-500 bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
-                <svg class="w-6 h-6 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
-                </svg>
+              <div class="text-center">
+                <p class="text-5xl md:text-6xl font-bold bg-gradient-to-r from-pink-400 to-purple-400 text-transparent bg-clip-text mb-2">500K+</p>
+                <p class="text-white text-opacity-50 text-sm uppercase tracking-wide">Artists</p>
               </div>
-              <h3 class="text-xl font-bold text-white mb-2">Comprehensive Data</h3>
-              <p class="text-gray-400">Access songs, albums, artists, playlists, lyrics, and more.</p>
-            </div>
-
-            <div class="p-6 border border-gray-800 rounded-lg hover:border-blue-500/50 transition-all bg-gray-900 bg-opacity-50">
-              <div class="w-12 h-12 bg-blue-500 bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
-                <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-                </svg>
+              <div class="text-center">
+                <p class="text-5xl md:text-6xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text mb-2">1M+</p>
+                <p class="text-white text-opacity-50 text-sm uppercase tracking-wide">Albums</p>
               </div>
-              <h3 class="text-xl font-bold text-white mb-2">Easy Integration</h3>
-              <p class="text-gray-400">RESTful API with simple endpoints and clear documentation.</p>
-            </div>
-
-            <div class="p-6 border border-gray-800 rounded-lg hover:border-green-500/50 transition-all bg-gray-900 bg-opacity-50">
-              <div class="w-12 h-12 bg-green-500 bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
-                <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                </svg>
+              <div class="text-center">
+                <p class="text-5xl md:text-6xl font-bold bg-gradient-to-r from-pink-400 to-purple-400 text-transparent bg-clip-text mb-2">24/7</p>
+                <p class="text-white text-opacity-50 text-sm uppercase tracking-wide">Uptime</p>
               </div>
-              <h3 class="text-xl font-bold text-white mb-2">Open Source</h3>
-              <p class="text-gray-400">Fully open-source and community-driven. Contribute on GitHub.</p>
             </div>
           </div>
-        </main>
+        </section>
 
         {/* Footer */}
-        <footer class="border-t border-gray-800 py-8 mt-16">
-          <div class="max-w-screen-lg mx-auto px-4 text-center">
-            <p class="text-gray-500 text-sm mb-2">
+        <footer class="border-t border-white border-opacity-5 py-12 px-6 mt-20">
+          <div class="max-w-6xl mx-auto text-center">
+            <div class="flex items-center justify-center space-x-3 mb-4">
+              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10" fill="none" stroke="#8b5cf6" stroke-width="2"/>
+                <circle cx="12" cy="12" r="6" fill="none" stroke="#a78bfa" stroke-width="2"/>
+                <circle cx="12" cy="12" r="2" fill="#8b5cf6"/>
+              </svg>
+              <span class="text-lg font-bold">Vortex</span>
+            </div>
+            <p class="text-white text-opacity-40 text-sm mb-2">
               © 2024 Vortex Music Database. Open Source Project.
             </p>
-            <p class="text-gray-600 text-xs">
+            <p class="text-white text-opacity-30 text-xs max-w-2xl mx-auto">
               Not affiliated with JioSaavn, Spotify, YouTube, SoundCloud, Gaana, Apple Music, or any other music streaming service.
             </p>
           </div>
