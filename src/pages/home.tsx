@@ -22,38 +22,23 @@ export const Meteors = ({ number }: { number: number }) => {
 }
 
 Home.get('/', (c) => {
-  const title = 'JioSaavn API'
+  const title = 'Vortex Music Database'
   const description =
-    'JioSaavn API is an unofficial wrapper written in TypeScript for jiosaavn.com providing programmatic access to a vast library of songs, albums, artists, playlists, and more.'
+    'Vortex is a powerful music database API providing seamless access to songs, albums, artists, playlists, and more. Built for developers who need reliable music data.'
 
   return c.html(
     <html>
       <head>
-        <title>JioSaavn API</title>
+        <title>Vortex Music Database</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charset="utf-8" />
         <meta name="description" content={description} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://saavn.dev/" />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://saavn.dev/" />
         <meta property="twitter:title" content={title} />
         <meta property="twitter:description" content={description} />
-        <meta
-          property="og:image"
-          content="https://raw.githubusercontent.com/sumitkolhe/jiosaavn-api/main/assets/preview.jpg"
-        />
-        <meta
-          property="twitter:image"
-          content="https://raw.githubusercontent.com/sumitkolhe/jiosaavn-api/main/assets/preview.jpg"
-        />
-        <link
-          rel="icon"
-          type="image/x-icon"
-          href="https://raw.githubusercontent.com/sumitkolhe/jiosaavn-api/main/assets/favicon.ico"
-        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
@@ -78,128 +63,127 @@ Home.get('/', (c) => {
               transform: translateY(-50%);
               width: 50px;
               height: 1px;
-              background: linear-gradient(90deg, #64748b, transparent);
-            }
-            .animate-meteor-effect {
-              animation-name: meteorAnimation;
+              background: linear-gradient(90deg, #8b5cf6, transparent);
             }`
           }}
         />
       </head>
-      <body class="bg-black mx-auto md:min-h-screen max-w-screen-lg flex flex-col">
-        <main class="mx-auto my-auto flex flex-col space-y-8 px-4 pb-8 md:py-10 relative overflow-y-hidden overflow-x-hidden">
+      <body class="bg-black min-h-screen flex flex-col">
+        {/* Navigation */}
+        <nav class="border-b border-gray-800 bg-black bg-opacity-50 backdrop-blur-sm sticky top-0 z-50">
+          <div class="max-w-screen-lg mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+              <svg class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path
+                  fill="#8b5cf6"
+                  d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5zm0 18c-3.86-.93-7-5.17-7-9V8.3l7-3.5 7 3.5V11c0 3.83-3.14 8.07-7 9z"
+                />
+                <circle cx="12" cy="12" r="3" fill="#8b5cf6"/>
+              </svg>
+              <span class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
+                Vortex
+              </span>
+            </div>
+            <div class="flex items-center space-x-6">
+              <a href="/docs" class="text-gray-300 hover:text-white transition-colors text-sm">Docs</a>
+              <a href="#features" class="text-gray-300 hover:text-white transition-colors text-sm">Features</a>
+              <a href="https://github.com" target="_blank" class="text-gray-300 hover:text-white transition-colors text-sm">GitHub</a>
+            </div>
+          </div>
+        </nav>
+
+        {/* Main Content */}
+        <main class="flex-1 max-w-screen-lg mx-auto px-4 py-16 relative overflow-hidden">
           <Meteors number={15} />
 
-          <div class="flex flex-row items-center space-x-4 ml-6">
-            <svg class="sm:h-12 sm:w-12 h-8 w-8 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <path
-                fill="#ff7d78"
-                d="M3.172 3.464C2 4.93 2 7.286 2 12c0 4.714 0 7.071 1.172 8.535C4.343 22 6.229 22 10 22h3.376A4.25 4.25 0 0 1 17 16.007V12.25a2.25 2.25 0 0 1 4.5 0a.75.75 0 0 0 .5.707V12c0-4.714 0-7.071-1.172-8.536C19.657 2 17.771 2 14 2h-4C6.229 2 4.343 2 3.172 3.464"
-                opacity=".5"
-              />
-              <path
-                fill="#ff7d78"
-                fill-rule="evenodd"
-                d="M8.25 12a3.75 3.75 0 1 1 7.5 0a3.75 3.75 0 0 1-7.5 0m11-.5a.75.75 0 0 1 .75.75a2.25 2.25 0 0 0 2.25 2.25a.75.75 0 0 1 0 1.5a3.734 3.734 0 0 1-2.25-.75v5a2.75 2.75 0 1 1-1.5-2.45v-5.55a.75.75 0 0 1 .75-.75m-.75 8.75a1.25 1.25 0 1 0-2.5 0a1.25 1.25 0 0 0 2.5 0"
-                clip-rule="evenodd"
-              />
-            </svg>
-            <p class="text-2xl md:text-4xl text-transparent font-bold leading-none bg-clip-text bg-gradient-to-r from-[#ff7d78] to-purple-600">
-              JioSaavn API
-              <span class="uppercase text-sm ml-3 text-gray-500 font-normal sm:hidden">Unofficial</span>
+          {/* Hero Section */}
+          <div class="text-center mb-16 relative z-10">
+            <div class="inline-block mb-4">
+              <span class="animate-[borderAnimation_3s_linear_infinite] rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-purple-500 bg-[length:400%_400%] p-1">
+                <span class="block rounded-full px-4 py-1.5 text-xs text-white uppercase tracking-wider bg-black">
+                  Music Database API
+                </span>
+              </span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 mb-6">
+              Vortex Music
+            </h1>
+            <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-8">
+              A comprehensive music database API providing instant access to millions of songs, albums, artists, and playlists. 
+              Built for developers, powered by speed.
             </p>
-            <p class="hidden sm:block animate-[borderAnimation_3s_linear_infinite] rounded bg-gradient-to-r from-red-500 via-purple-500 to-blue-500 bg-[length:400%_400%] p-1">
-              <span class="block rounded px-1.5 py-0.5 text-xs text-white uppercase tracking-wider">Unofficial</span>
-            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a
+                href="/docs"
+                class="px-8 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition-all"
+              >
+                Get Started
+              </a>
+              <a
+                href="https://github.com"
+                target="_blank"
+                class="px-8 py-3 border border-gray-700 text-gray-300 rounded-lg font-semibold hover:bg-gray-900 transition-all"
+              >
+                View on GitHub
+              </a>
+            </div>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-4 lg:grid-cols-4 xl:grid-cols-8 gap-2 sm:gap-0 relative grid-flow-row">
-            <a
-              target="_blank"
-              class="p-4 sm:p-8 hover:bg-opacity-5 hover:bg-white rounded-lg duration-100 sm:col-span-4"
-              href="/docs"
-            >
-              <div class="flex flex-col">
-                <span class="text-xs uppercase bg-opacity-15 rounded text-center max-w-fit px-2 py-1 font-bold tracking-wide bg-red-500 text-red-500">
-                  Get Started
-                </span>
-                <span class="text-neutral-200 font-bold text-lg sm:text-xl md:text-2xl mt-2">Explore the Docs</span>
-                <div class="text-neutral-500 mt-2">
-                  Check out the documentation to learn how to use the JioSaavn API.
-                </div>
+          {/* Features Grid */}
+          <div id="features" class="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
+            <div class="p-6 border border-gray-800 rounded-lg hover:border-purple-500/50 transition-all bg-gray-900 bg-opacity-50">
+              <div class="w-12 h-12 bg-purple-500 bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
               </div>
-            </a>
+              <h3 class="text-xl font-bold text-white mb-2">Lightning Fast</h3>
+              <p class="text-gray-400">Optimized API endpoints delivering music data at incredible speeds.</p>
+            </div>
 
-            <a
-              target="_blank"
-              class="p-4 sm:p-8 hover:bg-opacity-5 hover:bg-white rounded-lg duration-100 sm:col-span-4"
-              href="https://github.com/sumitkolhe/jiosaavn-api"
-            >
-              <div class="flex flex-col">
-                <span class="text-xs uppercase bg-opacity-15 rounded text-center max-w-fit px-2 py-1 font-bold tracking-wide bg-green-500 text-green-500">
-                  Open Source
-                </span>
-                <span class="text-neutral-200 font-bold text-lg sm:text-xl md:text-2xl mt-2">Open Source</span>
-                <div class="text-neutral-500 mt-2">Saavn API is open-source. Check out the source code on github.</div>
+            <div class="p-6 border border-gray-800 rounded-lg hover:border-pink-500/50 transition-all bg-gray-900 bg-opacity-50">
+              <div class="w-12 h-12 bg-pink-500 bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+                </svg>
               </div>
-            </a>
+              <h3 class="text-xl font-bold text-white mb-2">Comprehensive Data</h3>
+              <p class="text-gray-400">Access songs, albums, artists, playlists, lyrics, and more.</p>
+            </div>
 
-            <a
-              target="_blank"
-              class="p-4 sm:p-8 hover:bg-opacity-5 hover:bg-white rounded-lg duration-100 sm:col-span-4"
-              href="https://github.com/sumitkolhe/jiosaavn-api/issues"
-            >
-              <div class="flex flex-col">
-                <span class="text-xs uppercase bg-opacity-15 rounded text-center max-w-fit px-2 py-1 font-bold tracking-wide bg-violet-500 text-violet-500">
-                  Contribute
-                </span>
-                <span class="text-neutral-200 font-bold text-lg sm:text-xl md:text-2xl mt-2">Get Involved</span>
-                <div class="text-neutral-500 mt-2">
-                  Encounter a bug or have a feature suggestion? Report it on GitHub or contribute by submitting a pull
-                  request.
-                </div>
+            <div class="p-6 border border-gray-800 rounded-lg hover:border-blue-500/50 transition-all bg-gray-900 bg-opacity-50">
+              <div class="w-12 h-12 bg-blue-500 bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                </svg>
               </div>
-            </a>
+              <h3 class="text-xl font-bold text-white mb-2">Easy Integration</h3>
+              <p class="text-gray-400">RESTful API with simple endpoints and clear documentation.</p>
+            </div>
 
-            <div class="p-4 sm:p-8 hover:bg-opacity-5 hover:bg-white rounded-lg duration-100 sm:col-span-4">
-              <div class="flex flex-col">
-                <span class="text-xs uppercase bg-opacity-15 rounded text-center max-w-fit px-2 py-1 font-bold tracking-wide bg-blue-500 text-blue-500">
-                  Contact
-                </span>
-                <span class="text-neutral-200 font-bold text-lg sm:text-xl md:text-2xl mt-2">Sumit Kolhe</span>
-                <div class="text-neutral-500 mt-2">
-                  Have a question or need help? Reach out on{' '}
-                  <a
-                    href="https://github.com/sumitkolhe"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:underline text-indigo-500"
-                  >
-                    GitHub
-                  </a>
-                  ,{' '}
-                  <a
-                    href="https://twitter.com/thesumitkolhe"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:underline text-sky-500"
-                  >
-                    Twitter
-                  </a>
-                  , or{' '}
-                  <a
-                    href="https://t.me/sumitkolhe"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:underline text-pink-500"
-                  >
-                    Telegram.
-                  </a>
-                </div>
+            <div class="p-6 border border-gray-800 rounded-lg hover:border-green-500/50 transition-all bg-gray-900 bg-opacity-50">
+              <div class="w-12 h-12 bg-green-500 bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
               </div>
+              <h3 class="text-xl font-bold text-white mb-2">Open Source</h3>
+              <p class="text-gray-400">Fully open-source and community-driven. Contribute on GitHub.</p>
             </div>
           </div>
         </main>
+
+        {/* Footer */}
+        <footer class="border-t border-gray-800 py-8 mt-16">
+          <div class="max-w-screen-lg mx-auto px-4 text-center">
+            <p class="text-gray-500 text-sm mb-2">
+              © 2024 Vortex Music Database. Open Source Project.
+            </p>
+            <p class="text-gray-600 text-xs">
+              Not affiliated with JioSaavn, Spotify, YouTube, SoundCloud, Gaana, Apple Music, or any other music streaming service.
+            </p>
+          </div>
+        </footer>
       </body>
     </html>
   )
