@@ -185,30 +185,6 @@ Home.get('/', (c) => {
           </div>
         </section>
 
-        {/* Stats Section */}
-        <section class="py-20 px-6 border-t border-white border-opacity-5">
-          <div class="max-w-6xl mx-auto">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-12">
-              <div class="text-center">
-                <p class="text-5xl md:text-6xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text mb-2">10M+</p>
-                <p class="text-white text-opacity-50 text-sm uppercase tracking-wide">Songs</p>
-              </div>
-              <div class="text-center">
-                <p class="text-5xl md:text-6xl font-bold bg-gradient-to-r from-pink-400 to-purple-400 text-transparent bg-clip-text mb-2">500K+</p>
-                <p class="text-white text-opacity-50 text-sm uppercase tracking-wide">Artists</p>
-              </div>
-              <div class="text-center">
-                <p class="text-5xl md:text-6xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text mb-2">1M+</p>
-                <p class="text-white text-opacity-50 text-sm uppercase tracking-wide">Albums</p>
-              </div>
-              <div class="text-center">
-                <p class="text-5xl md:text-6xl font-bold bg-gradient-to-r from-pink-400 to-purple-400 text-transparent bg-clip-text mb-2">24/7</p>
-                <p class="text-white text-opacity-50 text-sm uppercase tracking-wide">Uptime</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Footer */}
         <footer class="border-t border-white border-opacity-5 py-12 px-6 mt-20">
           <div class="max-w-6xl mx-auto text-center">
@@ -218,10 +194,9 @@ Home.get('/', (c) => {
                 <circle cx="12" cy="12" r="6" fill="none" stroke="#a78bfa" stroke-width="2"/>
                 <circle cx="12" cy="12" r="2" fill="#8b5cf6"/>
               </svg>
-              <span class="text-lg font-bold">Vortex</span>
             </div>
             <p class="text-white text-opacity-40 text-sm mb-2">
-              © 2024 Vortex Music Database. Open Source Project.
+              © 2025 Vortex Music Database.
             </p>
             <p class="text-white text-opacity-30 text-xs max-w-2xl mx-auto">
               Not affiliated with JioSaavn, Spotify, YouTube, SoundCloud, Gaana, Apple Music, or any other music streaming service.
