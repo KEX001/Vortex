@@ -100,11 +100,11 @@ Home.get('/', (c) => {
         </nav>
 
         {/* Hero Section */}
-        <section class="relative min-h-screen flex items-center justify-center px-6">
+        <section class="relative min-h-screen flex items-center justify-center px-6 pt-20">
           <Meteors number={20} />
           
           <div class="max-w-6xl mx-auto text-center relative z-10">
-            <div class="mb-8">
+            <div class="mb-8 mt-8">
               <span class="inline-block px-4 py-2 rounded-full text-xs font-semibold tracking-wide uppercase bg-white bg-opacity-5 border border-white border-opacity-20 text-white text-opacity-80">
                 Music Database
               </span>
@@ -118,8 +118,8 @@ Home.get('/', (c) => {
             </h1>
             
             <p class="text-xl md:text-2xl text-white text-opacity-60 max-w-3xl mx-auto mb-12 leading-relaxed font-light">
-              Vortex connects developers to a vast music database with instant access to songs, albums, artists, playlists, and more. 
-              One API, endless possibilities.
+              Vortex connects you to a vast music database with instant access to songs, albums, artists, playlists, and more. 
+              One platform, endless music.
             </p>
 
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">
@@ -127,7 +127,7 @@ Home.get('/', (c) => {
                 href="/docs"
                 class="px-10 py-4 bg-white text-black rounded-full text-lg font-bold hover:bg-opacity-90 transition-all shadow-xl shadow-white/10"
               >
-                Explore API
+                Explore Database
               </a>
               <a
                 href="https://github.com"
