@@ -79,8 +79,8 @@ Home.get('/', (c) => {
       </head>
       <body class="bg-black min-h-screen text-white overflow-x-hidden">
         {/* Navigation */}
-        <nav class="glass-nav border-b border-white border-opacity-10 sticky top-0 z-50">
-          <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        <nav class="sticky top-4 z-50 px-6">
+          <div class="max-w-5xl mx-auto glass-nav rounded-full border border-white border-opacity-10 px-6 py-4 flex items-center justify-between">
             <div class="flex items-center space-x-3">
               <svg class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <circle cx="12" cy="12" r="10" fill="none" stroke="#8b5cf6" stroke-width="2"/>
@@ -106,7 +106,7 @@ Home.get('/', (c) => {
           <div class="max-w-6xl mx-auto text-center relative z-10">
             <div class="mb-8">
               <span class="inline-block px-4 py-2 rounded-full text-xs font-semibold tracking-wide uppercase bg-white bg-opacity-5 border border-white border-opacity-20 text-white text-opacity-80">
-                Music Database API
+                Music Database
               </span>
             </div>
             
